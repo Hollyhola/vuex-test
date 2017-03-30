@@ -3,7 +3,8 @@
     <!--<h2>{{countAlias}}</h2>-->
     <button @click="add()">+</button>
     <h2>{{count}}</h2>
-    <h1>{{totalCount}}</h1>
+    <h3>{{doubleCount}}</h3>
+    <!--<h1>{{totalCount}}</h1>-->
     <!--<img src="./assets/logo.png">
     <router-view></router-view>-->
   </div>
@@ -44,8 +45,11 @@
               }
             },
          
-          count: state => state.count,   
-          totalCount: state => state.totalCount,
+          count: state => state.a.count,  
+           doubleCount() {
+               return this.$store.getters.doubleCount
+           }
+        //   totalCount: state => state.totalCount,
         }),
         // computed: {
         //     plan() {
@@ -72,9 +76,9 @@
                 //   type: 'increment',
                 //   amount: 10
                 // })
-                this.$store.dispatch('showAsync')
-                this.$store.dispatch('addCount', this.plan)
-
+                // this.$store.dispatch('showAsync')
+                // this.$store.dispatch('addCount', this.plan)
+                store.commit('increment')
             }
         }
     }
